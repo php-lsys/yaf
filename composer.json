@@ -1,0 +1,29 @@
+{
+	"name" : "lsys/yaf",
+	"type" : "library",
+	"license": "Apache-2.0",
+	"version" : "1.0.0",
+	"description" : "lsys module yaf",
+	"autoload" : {
+		"psr-4" : {
+			"LSYS\\Yaf\\" : "src/classes/LSYS/Yaf/"
+		}
+	},
+	"require" : {
+		"php" : ">=5.5",
+		"ext-yaf" : "*",
+		"lsys/config" : "~1.0.0",
+		"lsys/objectrender":"~1.0.0",
+		"lsys/pagination":"~1.0.0",
+		"lsys/session":"~1.0.0",
+		"lsys/loger":"~1.0.0",
+		"lsys/pageassets" : "~1.0.0",
+		"lsys/file-get" : "~1.0.0",
+		"lsys/file-image-get" : "~1.0.0",
+		"lsys/httpexception" : "~1.0.0",
+		"lsys/format" : "~1.0.0"
+	},
+	"require-dev" : {
+		"ares333/php-stubs-yaf" : "v1.1.2"
+	}
+}
