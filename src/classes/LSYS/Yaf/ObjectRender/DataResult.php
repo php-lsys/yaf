@@ -56,7 +56,18 @@ class DataResult{
 			$_body=[];
 			foreach ($body as $v){
 				if (is_object($v)||is_resource($v)){
-					$_body[]=$this->format($format, $v);
+					if (is_resource($v)){
+						$v=stream_get_contents($v);
+					}
+					if (is_object($v)&&method_exists($v, '__tostring')){
+						$v=strval($v);
+					}
+					if (!is_scalar($v)){
+						ob_start();
+						print_r($v);
+						$v=ob_get_clean();
+					}
+					$_body[]=strval($v);
 				}else{
 					$_body[]=$v;
 				}
@@ -83,7 +94,7 @@ class DataResult{
 			$out['message']=$this->_msg;
 		}
 		if($this->_page!==null){
-	        $data['page']=$this->_page->as_array();
+	        $out['page']=$this->_page->as_array();
 		}
 		if($this->_code!==null){
 			$out['code']=$this->_code;

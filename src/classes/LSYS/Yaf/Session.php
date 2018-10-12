@@ -104,7 +104,7 @@ class Session extends \LSYS\Session{
 	public function set($key, $value)
 	{
 		$this->start();
-		$this->_session->set($name, $value);
+		$this->_session->set($key, $value);
 		return $this;
 	}
 	public function delete($key)

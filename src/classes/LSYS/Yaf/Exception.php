@@ -1,6 +1,5 @@
 <?php
 namespace LSYS\Yaf;
-use LSYS\Core;
 use LSYS\Loger;
 use LSYS\HTTPException\HTTP404Exception;
 use LSYS\ObjectRender;

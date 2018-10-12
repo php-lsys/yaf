@@ -1,7 +1,6 @@
 <?php
 namespace LSYS\Yaf\View;
 use LSYS\PageAssets;
-use LSYS\FormatData\ShowConfig;
 use LSYS\Yaf\Utils;
 /**
  * 基本视图基类
