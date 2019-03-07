@@ -7,7 +7,7 @@ use LSYS\ObjectRender\Render;
 use LSYS\ObjectRender;
 use LSYS\ObjectRender\RenderSupport;
 class DataResult implements Render,RenderSupport{
-	public function support_class(){
+	public function supportClass(){
 	    return [\LSYS\Yaf\ObjectRender\DataResult::class];
 	}
 	public function format($format,$body){
@@ -16,7 +16,7 @@ class DataResult implements Render,RenderSupport{
 			case ObjectRender::FORMAT_JSON:
 			case ObjectRender::FORMAT_JSONP:
 			case ObjectRender::FORMAT_XML:
-				$body=$body->as_array();
+				$body=$body->asArray();
 				switch ($format){
 					case ObjectRender::FORMAT_JSONP:
 					    return ObjectRender::enjsonp($body);

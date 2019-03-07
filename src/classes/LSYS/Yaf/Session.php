@@ -60,7 +60,7 @@ class Session extends \LSYS\Session{
 	/**
 	 * @return  bool
 	 */
-	public function write_close()
+	public function writeClose()
 	{
 		session_write_close();
 		return TRUE;

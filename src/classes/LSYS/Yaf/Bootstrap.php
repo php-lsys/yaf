@@ -9,7 +9,7 @@ namespace {
 	\LSYS\Config\File::dirs(array(
 	    realpath(\Yaf\Application::app()->getAppDirectory()."/../conf"),
 	));
-	\LSYS\Yaf\Exception::set_level([
+	\LSYS\Yaf\Exception::setLevel([
 	    \LSYS\HTTPException\HTTP400Exception::class=>\LSYS\Loger::WARNING,
 	    \LSYS\HTTPException\HTTP401Exception::class=>\LSYS\Loger::WARNING,
 	    \LSYS\HTTPException\HTTP402Exception::class=>\LSYS\Loger::NOTICE,
@@ -57,9 +57,9 @@ namespace LSYS\Yaf{
 	     */
 	    public function _initObjectRenderDi(\Yaf\Dispatcher $dispatcher) {
 	        \LSYS\ObjectRender\DI::set(function(){
-	            return (new \LSYS\PageAssets\DI())->object_render(new \LSYS\DI\SingletonCallback(function(){
+	            return (new \LSYS\PageAssets\DI())->objectRender(new \LSYS\DI\SingletonCallback(function(){
 	                return (new \LSYS\ObjectRender())
-    	                ->set_render_support(new \LSYS\Yaf\ObjectRender\RenderSupport\DataResult());
+    	                ->setRenderSupport(new \LSYS\Yaf\ObjectRender\RenderSupport\DataResult());
 	            }));
 	        });
 	    }
@@ -69,10 +69,10 @@ namespace LSYS\Yaf{
 		 */
 		public function _initLogsHandler(\Yaf\Dispatcher $dispatcher) {
 	    	$loger=\LSYS\Loger\DI::get()->loger();
-	    	if (count($loger->get_handler())==0){
+	    	if (count($loger->getHandler())==0){
 	    	    $dir=\Yaf\Application::app()->getAppDirectory()."/../logs";
 	    		if (is_dir($dir))$dir=realpath($dir);
-	    		$loger->add_handler(new \LSYS\Loger\Handler\Folder($dir,\LSYS\Loger::ERROR));
+	    		$loger->addHandler(new \LSYS\Loger\Handler\Folder($dir,\LSYS\Loger::ERROR));
 	    	}
 		}
 		/**
@@ -80,7 +80,7 @@ namespace LSYS\Yaf{
 		 * @param \Yaf\Dispatcher $dispatcher
 		 */
 		public function _initView(\Yaf\Dispatcher $dispatcher) {
-		    $view=DI::get()->yaf_view();
+		    $view=DI::get()->yafView();
 			$dispatcher->setView($view);
 			$dispatcher->registerPlugin(new \LSYS\Yaf\Plugin\AssetsRender($view));
 			return $view;

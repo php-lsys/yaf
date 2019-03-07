@@ -14,14 +14,14 @@ class Output{
         $this->_response=$response;
     }
     public function render($format=null){
-        if (self::$format)$this->_object_render->set_format(self::$format);
-        if ($format)$this->_object_render->set_format($format);
+        if (self::$format)$this->_object_render->setFormat(self::$format);
+        if ($format)$this->_object_render->setFormat($format);
         if ($this->_response){
             if (method_exists($this->_response, 'setHeader')){
-                foreach ($this->_object_render->get_header() as $name=>$value){
+                foreach ($this->_object_render->getHeader() as $name=>$value){
                     $this->_response->setHeader($name, $value);
                 }
-                $this->_object_render->get_http_code()&&http_response_code($this->_object_render->get_http_code());
+                $this->_object_render->getHttpCode()&&http_response_code($this->_object_render->getHttpCode());
             }
             $this->_response->appendBody($this->_object_render->render());
         }else{

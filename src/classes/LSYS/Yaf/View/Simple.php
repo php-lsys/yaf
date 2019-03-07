@@ -14,21 +14,21 @@ class Simple extends \Yaf\View\Simple{
 	 * @return string
 	 */
 	public function format($datahandler,$data,$format=null){
-	    return \LSYS\FormatData\DI::get()->format_data()->format($datahandler, $data,$format);
+	    return \LSYS\FormatData\DI::get()->formatData()->format($datahandler, $data,$format);
 	}
 	/**
 	 * 页面资源对象
 	 * @return Utils
 	 */
 	public function utils(){
-	    return \LSYS\Yaf\DI::get()->yaf_utils();
+	    return \LSYS\Yaf\DI::get()->yafUtils();
 	}
 	/**
 	 * 页面资源对象
 	 * @return PageAssets
 	 */
 	public function assets(){
-		return \LSYS\PageAssets\DI::get()->page_assets();
+		return \LSYS\PageAssets\DI::get()->pageAssets();
 	}
 	/**
 	 * 局部块

@@ -10,7 +10,7 @@ abstract class Controller extends \Yaf\Controller_Abstract{
 	protected function displayData($data=null,$format=null){
 		\Yaf\Application::app()->getDispatcher()->disableView();
 		if (!$data instanceof DataResult) $data=DataResult::factory()->data($data);
-		(new Output(\LSYS\ObjectRender\DI::get()->object_render()->set_object($data), $this->_response))->render($format);
+		(new Output(\LSYS\ObjectRender\DI::get()->objectRender()->setObject($data), $this->_response))->render($format);
 		return false;
 	}
 	/**

@@ -37,7 +37,7 @@ class DataResult{
 		$this->_attrs=$attrs;
 		return $this;
 	}
-	protected function _data_array(){
+	protected function _dataArray(){
 		$body=$this->_data;
 		if($body==null)return $body;
 		if (is_resource($body)){
@@ -47,7 +47,7 @@ class DataResult{
 			$body=$body->jsonSerialize();
 		}
 		if (is_object($body)&&method_exists($body, 'as_array')){
-			$body=$body->as_array();
+			$body=$body->asArray();
 		}
 		if (is_object($body)&&method_exists($body, 'asArray')){
 			$body=$body->asArray();
@@ -84,9 +84,9 @@ class DataResult{
 		}
 		return $body;
 	}
-	public function as_array(){
+	public function asArray(){
 		$out=$this->_attrs;
-		$body=$this->_data_array();
+		$body=$this->_dataArray();
 		if($body!==null){
 			$out['data']=$body;
 		}
@@ -94,7 +94,7 @@ class DataResult{
 			$out['message']=$this->_msg;
 		}
 		if($this->_page!==null){
-	        $out['page']=$this->_page->as_array();
+	        $out['page']=$this->_page->asArray();
 		}
 		if($this->_code!==null){
 			$out['code']=$this->_code;

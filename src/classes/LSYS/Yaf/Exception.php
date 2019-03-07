@@ -46,7 +46,7 @@ class Exception extends \Yaf\Exception {
             \LSYS\Loger\DI::get()->loger()->add($level,$e);
         }catch(\Exception $e){}
         try{
-            (new \LSYS\Yaf\ObjectRender\Output(\LSYS\ObjectRender\DI::get()->object_render()->set_object($e)))->render();
+            (new \LSYS\Yaf\ObjectRender\Output(\LSYS\ObjectRender\DI::get()->objectRender()->setObject($e)))->render();
         }catch (\Exception $e){
             echo \LSYS\ObjectRender\Render\Exception::entext($e);
         }
@@ -57,7 +57,7 @@ class Exception extends \Yaf\Exception {
      * array('class'=>loger::level)
      * @param array $exception_level
      */
-    public static function set_level(array $exception_level){
+    public static function setLevel(array $exception_level){
         foreach ($exception_level as $k=>$v){
             self::$_exception_level[$k]=$v;
         }
@@ -68,7 +68,7 @@ class Exception extends \Yaf\Exception {
      * @param boolean $error_output
      * @param array $skip_error
      */
-    public static function set_error_handler($error_output=Exception::ERROR_OUTPUT_HTML,$skip_error=array(
+    public static function setErrorHandler($error_output=Exception::ERROR_OUTPUT_HTML,$skip_error=array(
        //'mysqli::__construct' //mysql 连接错误会添加wraing 如果外部会做异常处理,这里可以跳过此错误处理
     )){
         set_exception_handler(function($e){
@@ -79,7 +79,7 @@ class Exception extends \Yaf\Exception {
             $errors[]=func_get_args();
         });
         register_shutdown_function(function()use($error_output,$skip_error,&$errors){
-            $loger=\LSYS\Loger\DI::get()->loger()->batch_start();
+            $loger=\LSYS\Loger\DI::get()->loger()->batchStart();
             if ($error = error_get_last()){
                 $errors[]=array($error['type'],$error['message'],$error['file'],$error['line']);
             }
@@ -103,22 +103,22 @@ class Exception extends \Yaf\Exception {
                     case E_DEPRECATED:
                     case E_USER_DEPRECATED:
                     case E_USER_NOTICE:
-                        $loger->add_notice($v);
+                        $loger->addNotice($v);
                         break;
                     case E_CORE_WARNING:
                     case E_COMPILE_WARNING:
                     case E_USER_WARNING:
-                        $loger->add_warning($v);
+                        $loger->addWarning($v);
                         break;
                     default:
-                        $loger->add_error($v);
+                        $loger->addError($v);
                         break;
                 }
                 if($code===E_WARNING) unset($errors[$k]);//rename copy等函数错误不在抛出异常
                 else $errors[$k]=$v;
             }
             try{
-                $loger->batch_end();
+                $loger->batchEnd();
             }catch(\Exception $e){}
             if(count($errors)==0)return ;
             $format=\LSYS\Yaf\ObjectRender\Output::$format;

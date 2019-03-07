@@ -12,7 +12,7 @@ class Utils{
      * @param array $query
      * @return string|boolean
      */
-    public function url_link(){
+    public function urlLink(){
         $args=func_get_args();
         if (is_array($args[0])){
             $name="_default";
@@ -25,13 +25,13 @@ class Utils{
         }
         $route=\Yaf\Application::app()->getDispatcher()->getRouter()->getRoute($name);
         if ($route==null)return '';
-        return $this->url_base().ltrim($route->assemble($info,$query),'/');
+        return $this->urlBase().ltrim($route->assemble($info,$query),'/');
     }
     /**
      * 基本路径
      * @return string
      */
-    public function url_base(){
+    public function urlBase(){
         $baseuri=\Yaf\Application::app()->getConfig()->get("application")->get("baseUri");
         $baseuri= rtrim($baseuri,'/').'/';
         return $baseuri;
@@ -51,7 +51,7 @@ class Utils{
      * @param string $item
      * @return string
      */
-    public function url_file($key,$item){
+    public function urlFile($key,$item){
         return \LSYS\FileGet\DI::get()->fileget($key)->url($item);
     }
     /**
@@ -61,11 +61,11 @@ class Utils{
      * @param string $resize
      * @return string
      */
-    public function url_image($key,$item,$resize=NULL){
+    public function urlImage($key,$item,$resize=NULL){
         $image=\LSYS\FileImageGet\DI::get()->fileimageget($key);
         if (!$image)return false;
         if ($resize===null)return $image->url($item);
-        else return $image->resize_url($item, $resize);
+        else return $image->resizeUrl($item, $resize);
     }
 	/**
      * 生成图片所有可用路径
@@ -73,7 +73,7 @@ class Utils{
      * @param string $item
      * @return string[]
      */
-    public function url_images($key,$item){
+    public function urlImages($key,$item){
         $image=\LSYS\FileImageGet\DI::get()->fileimageget($key);
         if (!$image)return false;
 		return $image->urls($item);
@@ -91,7 +91,7 @@ class Utils{
      * @param string $controller
      * @return boolean
      */
-    public function is_controller($controller){
+    public function isController($controller){
         return \Yaf\Application::app()->getDispatcher()->getRequest()->controller==$controller;
     }
     /**
@@ -99,7 +99,7 @@ class Utils{
      * @param string $module
      * @return boolean
      */
-    public function is_module($module){
+    public function isModule($module){
         return \Yaf\Application::app()->getDispatcher()->getRequest()->module==$module;
     }
     /**
@@ -107,7 +107,7 @@ class Utils{
      * @param string $action
      * @return boolean
      */
-    public function is_action($action){
+    public function isAction($action){
         return \Yaf\Application::app()->getDispatcher()->getRequest()->action==$action;
     }
 }
