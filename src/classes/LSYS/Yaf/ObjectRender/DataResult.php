@@ -46,9 +46,6 @@ class DataResult{
 		if($body instanceof \JsonSerializable){
 			$body=$body->jsonSerialize();
 		}
-		if (is_object($body)&&method_exists($body, 'as_array')){
-			$body=$body->asArray();
-		}
 		if (is_object($body)&&method_exists($body, 'asArray')){
 			$body=$body->asArray();
 		}
