@@ -6,16 +6,6 @@ use LSYS\Yaf\Utils;
  */
 class Simple extends \Yaf\View\Simple{
 	/**
-	 * 格式化数据
-	 * @param string $datahandler
-	 * @param mixed $data
-	 * @param string $format
-	 * @return string
-	 */
-	public function format($datahandler,$data,$format=null){
-	    return \LSYS\FormatData\DI::get()->formatData()->format($datahandler, $data,$format);
-	}
-	/**
 	 * 页面资源对象
 	 * @return Utils
 	 */
