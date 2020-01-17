@@ -51,18 +51,6 @@ namespace LSYS\Yaf{
 	 * @author lonely
 	 */
 	abstract class Bootstrap extends \Yaf\Bootstrap_Abstract{
-	    /**
-	     * 对象渲染DI设置
-	     * @param \Yaf\Dispatcher $dispatcher
-	     */
-	    public function _initObjectRenderDi(\Yaf\Dispatcher $dispatcher) {
-	        \LSYS\ObjectRender\DI::set(function(){
-	            return (new \LSYS\PageAssets\DI())->objectRender(new \LSYS\DI\SingletonCallback(function(){
-	                return (new \LSYS\ObjectRender())
-    	                ->setRenderSupport(new \LSYS\Yaf\ObjectRender\RenderSupport\DataResult());
-	            }));
-	        });
-	    }
 		/**
 		 * 初始化日志处理,日志可能在别处,所以放到Bootstrap类中 方便重写
 		 * @param \Yaf\Dispatcher $dispatcher

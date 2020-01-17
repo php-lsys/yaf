@@ -1,6 +1,5 @@
 <?php
 namespace LSYS\Yaf\View;
-use LSYS\PageAssets;
 use LSYS\Yaf\Utils;
 /**
  * 基本视图基类
@@ -22,13 +21,6 @@ class Simple extends \Yaf\View\Simple{
 	 */
 	public function utils(){
 	    return \LSYS\Yaf\DI::get()->yafUtils();
-	}
-	/**
-	 * 页面资源对象
-	 * @return PageAssets
-	 */
-	public function assets(){
-		return \LSYS\PageAssets\DI::get()->pageAssets();
 	}
 	/**
 	 * 局部块

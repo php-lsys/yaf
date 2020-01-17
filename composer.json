@@ -12,14 +12,8 @@
 		"ext-yaf" : "*",
 		"lsys/config" : "~2.1.0",
 		"lsys/objectrender":"~2.1.0",
-		"lsys/pagination":"~2.1.0",
-		"lsys/session":"~2.1.0",
 		"lsys/loger":"~2.1.0",
-		"lsys/pageassets" : "~2.1.0",
-		"lsys/file-get" : "~2.1.0",
-		"lsys/file-image-get" : "~2.1.0",
-		"lsys/httpexception" : "~2.1.0",
-		"lsys/format" : "~2.1.0"
+		"lsys/httpexception" : "~2.1.0"
 	},
 	"require-dev" : {
 		"ares333/php-stubs-yaf" : "v1.1.2"

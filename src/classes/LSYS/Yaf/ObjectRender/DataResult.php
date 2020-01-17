@@ -8,7 +8,6 @@ class DataResult{
 	    return (new static())->status(!!$status);
 	}
 	protected $_data;
-	protected $_page;
 	protected $_msg;
 	protected $_status;
 	protected $_code;
@@ -23,10 +22,6 @@ class DataResult{
 	}
 	public function data($data){
 	    $this->_data=$data;
-	    return $this;
-	}
-	public function page(\LSYS\Pagination $page){
-	    $this->_page=$page;
 	    return $this;
 	}
 	public function status($status){
@@ -89,9 +84,6 @@ class DataResult{
 		}
 		if($this->_msg!==null){
 			$out['message']=$this->_msg;
-		}
-		if($this->_page!==null){
-	        $out['page']=$this->_page->asArray();
 		}
 		if($this->_code!==null){
 			$out['code']=$this->_code;

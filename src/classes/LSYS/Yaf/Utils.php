@@ -1,7 +1,5 @@
 <?php
 namespace LSYS\Yaf;
-use LSYS\Web\Request;
-
 class Utils{
     /**
      * 生成链接
@@ -35,48 +33,6 @@ class Utils{
         $baseuri=\Yaf\Application::app()->getConfig()->get("application")->get("baseUri");
         $baseuri= rtrim($baseuri,'/').'/';
         return $baseuri;
-    }
-    /**
-     * 得到完整站点地址
-     * @param string $domain
-     * @param string $ssl
-     * @return string
-     */
-    public function site($domain=null,$ssl=null,$port=true){
-        return Request::site($domain,$ssl,$port);
-    }
-    /**
-     * 生成文件路径
-     * @param string $key
-     * @param string $item
-     * @return string
-     */
-    public function urlFile($key,$item){
-        return \LSYS\FileGet\DI::get()->fileget($key)->url($item);
-    }
-    /**
-     * 生成图片路径
-     * @param string $key
-     * @param string $item
-     * @param string $resize
-     * @return string
-     */
-    public function urlImage($key,$item,$resize=NULL){
-        $image=\LSYS\FileImageGet\DI::get()->fileimageget($key);
-        if (!$image)return false;
-        if ($resize===null)return $image->url($item);
-        else return $image->resizeUrl($item, $resize);
-    }
-	/**
-     * 生成图片所有可用路径
-     * @param string $key
-     * @param string $item
-     * @return string[]
-     */
-    public function urlImages($key,$item){
-        $image=\LSYS\FileImageGet\DI::get()->fileimageget($key);
-        if (!$image)return false;
-		return $image->urls($item);
     }
     /**
      * get tpl name
