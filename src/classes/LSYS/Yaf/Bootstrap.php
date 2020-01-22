@@ -70,7 +70,6 @@ namespace LSYS\Yaf{
 		public function _initView(\Yaf\Dispatcher $dispatcher) {
 		    $view=DI::get()->yafView();
 			$dispatcher->setView($view);
-			$dispatcher->registerPlugin(new \LSYS\Yaf\Plugin\AssetsRender($view));
 			return $view;
 		}
 	}
