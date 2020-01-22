@@ -16,6 +16,7 @@ abstract class Controller extends \Yaf\Controller_Abstract{
 	 * @param mixed $data
 	 */
 	protected function displayData($data=null,$format=null){
+	    \Yaf\Application::app()->getDispatcher()->disableView();
 		if (!$data instanceof DataResult) $data=DataResult::factory()->data($data);
 		(new Output(\LSYS\ObjectRender\DI::get()->objectRender()->setObject($data), $this->_response))->render($format);
 		return false;
