@@ -10,10 +10,10 @@
 	},
 	"require" : {
 		"ext-yaf" : "*",
-		"lsys/config" : "~0.0.0",
-		"lsys/objectrender":"~0.0.0",
-		"lsys/loger":"~0.0.0",
-		"lsys/httpexception" : "~0.0.0"
+		"lsys/config" : "~0.0.1",
+		"lsys/objectrender":"~0.0.1",
+		"lsys/loger":"~0.0.1",
+		"lsys/httpexception" : "~0.0.1"
 	},
 	"require-dev" : {
 		"ares333/php-stubs-yaf" : "v1.1.2"
