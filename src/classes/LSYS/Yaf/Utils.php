@@ -3,24 +3,12 @@ namespace LSYS\Yaf;
 class Utils{
     /**
      * 生成链接
-     * 	第一个参数为数组 为默认路由 传两个参数
-     *  第一个参数为字符串 为路由名称 传三个参数
-     * @param string $name
      * @param array $info
      * @param array $query
+     * @param string $name 
      * @return string|boolean
      */
-    public function urlLink(){
-        $args=func_get_args();
-        if (is_array($args[0])){
-            $name="_default";
-            $info=isset($args[0])?(array)$args[0]:[];
-            $query=isset($args[1])?(array)$args[1]:[];
-        }else{
-            $name=strval($args[0]);
-            $info=isset($args[1])?(array)$args[1]:[];
-            $query=isset($args[2])?(array)$args[2]:[];
-        }
+    public function urlLink(array $info,array $query,$name="_default"){
         $route=\Yaf\Application::app()->getDispatcher()->getRouter()->getRoute($name);
         if ($route==null)return '';
         return $this->urlBase().ltrim($route->assemble($info,$query),'/');
